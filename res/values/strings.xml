@@ -8,5 +8,7 @@
         <item >Home</item>
         <item >Map</item>
     </string-array>
+    <string name="drawer_open">Drawer open</string>
+    <string name="drawer_closed">Drawer closed</string>
 
 </resources>
