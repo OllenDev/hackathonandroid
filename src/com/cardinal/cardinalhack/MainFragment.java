@@ -23,6 +23,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 	private static final String KEY_CURRENT_VALUE = "KEY_CURRENT_VALUE";
 	private TextView hintBox1;
 	private TextView hintBox2;
+	private TextView binaryValue;
 	private Button switchFor8;
 	private Button switchFor4;
 	private Button switchFor2;
@@ -38,6 +39,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 		View rootView = inflater.inflate(R.layout.main_fragment, container, false);
 		hintBox1 = (TextView) rootView.findViewById(R.id.hintBox1);
 		hintBox2 = (TextView) rootView.findViewById(R.id.hintBox2);
+		binaryValue = (TextView) rootView.findViewById(R.id.binaryValue);
 		switchFor8 = (Button) rootView.findViewById(R.id.place8Switch);
 		switchFor8.setOnClickListener(this);
 		switchFor4 = (Button) rootView.findViewById(R.id.place4Switch);
@@ -121,7 +123,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 		default:
 			//Shouldn't get here
 		}
-		Log.d(TAG, "Current value of lights is " + currentValue.toString());
+		binaryValue.setText(currentValue.toString());
 	}
 	
 	/**
@@ -130,8 +132,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 	 */
 	private void restore() {
 		Log.d(TAG, "restore()");
+		binaryValue.setText(currentValue.toString());
 		int value = currentValue.intValue();
-		
 		if ((value&8) > 0) {
 			switchFor8.setSelected(true);
 			lightFor8.setBackgroundColor(Color.RED);
