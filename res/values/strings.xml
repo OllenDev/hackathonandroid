@@ -10,5 +10,7 @@
     </string-array>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_closed">Drawer closed</string>
+    <string name="text_for_11">11 = Vital hackathon information.</string>
+    <string name="text_for_4">4 = Location of hackathon.</string>
 
 </resources>
