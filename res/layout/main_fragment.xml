@@ -28,26 +28,39 @@
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         android:singleLine="true"
+        android:text="@string/text_for_9"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/hintBox3"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/hintBox2"
+        android:layout_below="@+id/navButton"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
         android:text="@string/text_for_11"
         android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/binaryValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignRight="@+id/linearLayout1"
         android:layout_alignTop="@+id/hintBox1"
         android:text="@string/zero"
+        android:focusable="false"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/navButton"
-        android:enabled="false"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignRight="@+id/binaryValue"
-        android:layout_alignTop="@+id/hintBox2" />
+        android:layout_alignTop="@+id/hintBox2"
+        android:enabled="false" />
 
     <ImageView
         android:id="@+id/imageView1"

@@ -6,8 +6,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_closed">Drawer closed</string>
-    <string name="text_for_11">11 = Vital hackathon information.</string>
-    <string name="text_for_4">4 = Location of hackathon.</string>
+    <string name="text_for_11">11 = Vital Information about the Rebel Hackathon</string>
+    <string name="text_for_9">9 = Command Console</string>
+    <string name="text_for_4">4 = Location of Rebel Base</string>
     <string name="zero">0</string>
 
 </resources>
