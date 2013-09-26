@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 	private static final int NAV_MAP = 4;
 	private static final int NAV_COMMAND_CONSOLE = 9;
 	private static final int NAV_INFO = 11;
+	private Typeface digiFont;
 	private View rootView;
 	private TextView hintBox1;
 	private TextView hintBox2;
@@ -53,7 +55,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 					false);
 			hintBox1 = (TextView) rootView.findViewById(R.id.hintBox1);
 			hintBox2 = (TextView) rootView.findViewById(R.id.hintBox2);
-			hintBox3 = (TextView) rootView.findViewById(R.id.hintBox3);
+			hintBox3 = (TextView) rootView.findViewById(R.id.hintBox3);  
 			binaryValue = (TextView) rootView.findViewById(R.id.binaryValue);
 			switchFor8 = (Button) rootView.findViewById(R.id.place8Switch);
 			switchFor8.setOnClickListener(this);
@@ -84,6 +86,16 @@ public class MainFragment extends Fragment implements OnClickListener {
 		}
 
 		return rootView;
+	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		Log.d(TAG, "onActivityCreated()");
+		super.onActivityCreated(savedInstanceState);
+		if (digiFont == null) {
+			digiFont = Typeface.createFromAsset(this.getActivity().getAssets(), "ds_digi.ttf");  
+			binaryValue.setTypeface(digiFont);
+		}
 	}
 
 	@Override
