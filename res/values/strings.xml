@@ -4,10 +4,6 @@
     <string name="app_name">Cardinal Hack</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string-array name="nav_items">
-        <item >Home</item>
-        <item >Map</item>
-    </string-array>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_closed">Drawer closed</string>
     <string name="text_for_11">11 = Vital hackathon information.</string>
