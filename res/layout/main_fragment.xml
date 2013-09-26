@@ -5,23 +5,31 @@
     android:background="@android:color/black" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/hintBox1"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
         android:layout_alignLeft="@+id/linearLayout1"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="13dp"
         android:layout_marginTop="22dp"
-        android:text="@string/text_for_4" />
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="@string/text_for_4"
+        android:textColor="@android:color/white" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:id="@+id/hintBox2"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/hintBox1"
+        android:layout_below="@+id/hintBox1"
         android:layout_marginTop="26dp"
-        android:text="@string/text_for_11" />
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:text="@string/text_for_11"
+        android:textColor="@android:color/white" />
 
     <ImageView
         android:id="@+id/imageView1"

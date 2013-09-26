@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Class implements a set of switches that represent binary numbers places.
@@ -20,6 +21,8 @@ import android.widget.Button;
 public class MainFragment extends Fragment implements OnClickListener {
 	private static final String TAG = MainFragment.class.getSimpleName();
 	private static final String KEY_CURRENT_VALUE = "KEY_CURRENT_VALUE";
+	private TextView hintBox1;
+	private TextView hintBox2;
 	private Button switchFor8;
 	private Button switchFor4;
 	private Button switchFor2;
@@ -33,6 +36,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.main_fragment, container, false);
+		hintBox1 = (TextView) rootView.findViewById(R.id.hintBox1);
+		hintBox2 = (TextView) rootView.findViewById(R.id.hintBox2);
 		switchFor8 = (Button) rootView.findViewById(R.id.place8Switch);
 		switchFor8.setOnClickListener(this);
 		switchFor4 = (Button) rootView.findViewById(R.id.place4Switch);
@@ -56,6 +61,13 @@ public class MainFragment extends Fragment implements OnClickListener {
 		}
 		
 		return rootView;
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		hintBox1.setSelected(true);
+		hintBox2.setSelected(true);
 	}
 	
 	@Override
