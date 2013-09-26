@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
 			FragmentTransaction ft = mFM.beginTransaction();
 			MainFragment fragment = new MainFragment();
 			ft.add(R.id.content_frame, fragment);
+			ft.addToBackStack(MainFragment.class.getName());
 			ft.commit();
 		}
 	}

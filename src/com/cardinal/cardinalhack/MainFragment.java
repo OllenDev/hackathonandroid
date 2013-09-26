@@ -1,6 +1,8 @@
 package com.cardinal.cardinalhack;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 public class MainFragment extends Fragment implements OnClickListener {
 	private static final String TAG = MainFragment.class.getSimpleName();
 	private static final String KEY_CURRENT_VALUE = "KEY_CURRENT_VALUE";
+	private static final Integer NAV_MAP = 4;
 	private TextView hintBox1;
 	private TextView hintBox2;
 	private TextView binaryValue;
@@ -32,10 +35,12 @@ public class MainFragment extends Fragment implements OnClickListener {
 	private Button lightFor4;
 	private Button lightFor2;
 	private Button lightFor1;
+	private Button navButton;
 	private Integer currentValue; // What the representation of the binary value is
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.d(TAG, "onCreateView()");
 		View rootView = inflater.inflate(R.layout.main_fragment, container, false);
 		hintBox1 = (TextView) rootView.findViewById(R.id.hintBox1);
 		hintBox2 = (TextView) rootView.findViewById(R.id.hintBox2);
@@ -52,6 +57,8 @@ public class MainFragment extends Fragment implements OnClickListener {
 		lightFor4 = (Button) rootView.findViewById(R.id.place4Light);
 		lightFor2 = (Button) rootView.findViewById(R.id.place2Light);
 		lightFor1 = (Button) rootView.findViewById(R.id.place1Light);
+		navButton = (Button) rootView.findViewById(R.id.navButton);
+		navButton.setOnClickListener(this);
 		
 		super.onCreate(savedInstanceState);
 		if (savedInstanceState != null) {
@@ -67,6 +74,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 	
 	@Override
 	public void onResume() {
+		Log.d(TAG, "onResume()");
 		super.onResume();
 		hintBox1.setSelected(true);
 		hintBox2.setSelected(true);
@@ -74,12 +82,14 @@ public class MainFragment extends Fragment implements OnClickListener {
 	
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
+		Log.d(TAG, "onSaveInstanceState()");
 		outState.putInt(KEY_CURRENT_VALUE, currentValue);
 		super.onSaveInstanceState(outState);
 	}
 
 	@Override
 	public void onClick(View v) {
+		Log.d(TAG, "onClick()");
 		Button button = (Button)v;
 		button.setSelected(!button.isSelected());
 		int id = v.getId();
@@ -120,10 +130,34 @@ public class MainFragment extends Fragment implements OnClickListener {
 				lightFor1.setBackgroundColor(Color.WHITE);
 			}
 			break;
+		case R.id.navButton:
+			handleNavClick();
 		default:
 			//Shouldn't get here
 		}
 		binaryValue.setText(currentValue.toString());
+		shouldEnableNav();
+	}
+	
+	private void handleNavClick() {
+		Log.d(TAG, "handleNavClick()");
+		if (currentValue == NAV_MAP) {
+			MapControlFragment mapFragment = new MapControlFragment();
+			FragmentManager fm = getFragmentManager();
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.replace(R.id.content_frame, mapFragment);
+			ft.addToBackStack(MapControlFragment.class.getName());
+			ft.commit();
+		}
+	}
+	
+	private void shouldEnableNav() {
+		Log.d(TAG, "shouldEnableNav()");
+		if (currentValue == NAV_MAP) {
+			navButton.setEnabled(true);
+		} else {
+			navButton.setEnabled(false);
+		}
 	}
 	
 	/**
@@ -153,5 +187,6 @@ public class MainFragment extends Fragment implements OnClickListener {
 			switchFor1.setSelected(true);
 			lightFor1.setBackgroundColor(Color.RED);
 		}
+		shouldEnableNav();
 	}
 }
